@@ -1,5 +1,17 @@
-{
-  "title": "Note2 utilisant cypress",
-  "description": "Description de ma note1 créée grâce à cypress",
-  "cayegory": "Personal"
-}
+[
+  {
+    "title": "note 1",
+    "description": " description n°1",
+    "category": "Work"
+  },
+  {
+    "title": " note 2",
+    "description": "description n°2",
+    "category": "Personal"
+  },
+  {
+    "title": " note 3",
+    "description": "description n°3",
+    "category": "Home"
+  }
+]
