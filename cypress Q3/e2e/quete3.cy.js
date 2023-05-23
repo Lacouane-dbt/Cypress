@@ -1,7 +1,10 @@
+const { faker } = require('@faker-js/faker');
+
 describe("Utilisation de l'API note", () => {
 
   let authToken = null;
   let noteDlte = null;
+  let user = require('../fixtures/creationNote');
 
   before('Login api note', () => {
     cy.request({
@@ -34,8 +37,7 @@ describe("Utilisation de l'API note", () => {
     });
   });
 
-
-  it.skip('Création de notes', () => {
+  it('Création de notes', () => {
     cy.request({
       url: 'https://practice.expandtesting.com/notes/api/notes',
       method: 'POST',
@@ -53,10 +55,8 @@ describe("Utilisation de l'API note", () => {
     });
   });
 
-
-
-
-  it.only('Création de notes par appel du dossier fixtures', () => {
+  it('Création de notes par appel du dossier fixtures', () => {
+   const users= user[0]
     cy.request({
       url: 'https://practice.expandtesting.com/notes/api/notes',
       method: 'POST',
@@ -65,10 +65,11 @@ describe("Utilisation de l'API note", () => {
         'x-auth-token': authToken
       },
       body: {
-        'title': 'Note1 utilisant cypress',
-        'description': 'Description de ma note1 créée grâce à cypress',
-        'category': 'Work'
+        'title': users.title,
+        'description': users.description,
+        'category': users.category
       }
+
     }).then((response) => {
       expect(response.status).to.equal(200)
       noteDlte = response.body.data.id;
